@@ -1,6 +1,20 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.image_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .image {
     position: relative;
     width: 400px;
+    margin: 2rem;
 }
 
 .image_img {
@@ -22,10 +36,29 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.image_overlay_blur {
+    backdrop-filter: blur(5px);
+}
+
+.image_overlay_color {
+    background: #009578;
 }
 
 .image_overlay:hover {
     opacity: 1;
+}
+
+/* Target every direct child of the image_overlay, so target the image_title & image_description */
+.image_overlay > * {
+    transform: translateY(20px);
+    transition: transform 0.25s;
+}
+
+.image_overlay:hover > * {
+    transform: translateY(0);
 }
 
 .image_title {
